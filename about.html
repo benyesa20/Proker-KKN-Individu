@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tentang | Edukasi Sampah RW 07</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(rgba(230,245,255,0.85), rgba(200,230,255,0.9)),
+                  url('bggsampah.jpeg') repeat;
+      background-attachment: fixed;
+      background-size: contain;
+      color: #222;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    .leaf-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      overflow: hidden;
+      z-index: -1;
+    }
+
+    .leaf {
+      position: absolute;
+      top: -60px;
+      width: 60px;
+      height: 60px;
+      background: url('sampah.jpg') no-repeat center;
+      background-size: contain;
+      animation: fall linear infinite;
+      opacity: 0.7;
+    }
+
+    @keyframes fall {
+      0% {
+        transform: translateY(-60px) rotate(0deg);
+      }
+      100% {
+        transform: translateY(100vh) rotate(360deg);
+      }
+    }
+
+    header {
+      background-color: rgba(0, 64, 128, 0.85);
+      color: white;
+      padding: 1.5rem 1rem;
+      text-align: center;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.3);
+      border-bottom: 2px solid #00ccff;
+      z-index: 2;
+    }
+
+    header h1 {
+      margin: 0 0 1.5rem 0;
+      font-size: 2.2rem;
+      white-space: nowrap;
+      overflow: hidden;
+      border-right: 3px solid #00ccff;
+      width: 0;
+      animation: typing 4s steps(60, end) forwards;
+    }
+
+    @keyframes typing {
+      from { width: 0; }
+      to { width: 100%; }
+    }
+
+    nav ul {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      list-style: none;
+      padding: 0.7rem 0;
+      background-color: rgba(0, 0, 64, 0.6);
+      box-shadow: inset 0 0 8px #00ccff;
+      margin: 0;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      padding: 0.5rem 1rem;
+      margin: 0 0.5rem;
+      border-radius: 5px;
+      transition: all 0.3s ease;
+      border: 1px solid transparent;
+    }
+
+    nav a.active,
+    nav a:hover {
+      background-color: #ffffff !important;
+      color: #003366 !important;
+      border-color: #3399ff !important;
+      box-shadow: 0 0 10px #3399ff !important;
+    }
+
+    main {
+      max-width: 1000px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
+
+    section {
+      background-color: rgba(255, 255, 255, 0.88);
+      margin-bottom: 2rem;
+      padding: 2rem;
+      border-radius: 15px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.2);
+      animation: fadeIn 1s ease-in-out;
+      z-index: 2;
+      position: relative;
+    }
+
+    section h2 {
+      margin-top: 0;
+      color: #003366;
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+
+    section p {
+      line-height: 1.7;
+      font-size: 1.1rem;
+    }
+
+    .hero img {
+      max-width: 100%;
+      border-radius: 12px;
+      margin-top: 1rem;
+      box-shadow: 0 0 10px rgba(0,0,0,0.3);
+    }
+
+    .anggota-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 2rem;
+      padding-top: 1rem;
+    }
+
+    .anggota-card {
+      text-align: center;
+    }
+
+    .anggota-card img {
+      width: 180px;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 15px;
+      box-shadow: 0 0 12px rgba(0,0,0,0.3);
+      transition: transform 0.3s, box-shadow 0.3s;
+      cursor: pointer;
+    }
+
+    .anggota-card img:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 15px #00ccff;
+    }
+
+    .anggota-card p {
+      margin-top: 0.6rem;
+      font-size: 1rem;
+      font-weight: bold;
+      color: #0a0a0a;
+    }
+
+    footer {
+      background-color: rgba(0, 0, 0, 0.85);
+      color: white;
+      text-align: center;
+      padding: 1rem;
+      font-size: 0.9rem;
+      border-top: 2px solid #00ccff;
+      z-index: 2;
+      position: relative;
+    }
+
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 999;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0,0,0,0.9);
+    }
+
+    .modal-content {
+      margin: 5% auto;
+      display: block;
+      max-width: 90%;
+      max-height: 90vh;
+    }
+
+    .modal-content, .modal-caption {
+      animation-name: zoom;
+      animation-duration: 0.6s;
+    }
+
+    @keyframes zoom {
+      from { transform: scale(0) }
+      to { transform: scale(1) }
+    }
+
+    .close {
+      position: absolute;
+      top: 20px;
+      right: 40px;
+      color: #fff;
+      font-size: 40px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Falling trash container -->
+  <div class="leaf-container" id="leaf-container"></div>
+
+  <header>
+    <h1>Tentang Program Edukasi Sampah RW 07</h1>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html" class="active">Tentang</a></li>
+        <li><a href="edukasi.html">Edukasi</a></li>
+        <li><a href="contact.html">Kontak</a></li>
+      </ul>
+    </nav>
+  </header>
+
+<main>
+  <!-- RW 07 Peduli Sampah -->
+  <section class="hero" style="background: linear-gradient(135deg, #2196F3, #1565C0); color: #fff; text-align: center; padding: 50px 25px; border-radius: 20px; margin-bottom: 40px; box-shadow: 0 10px 25px rgba(0,0,0,0.2);">
+    <h2 style="font-size: 2.3rem; margin-bottom: 15px;">🌿 RW 07 Peduli Sampah</h2>
+    <p style="font-size: 1.2rem; max-width: 750px; margin: auto; line-height: 1.7;">
+      Komitmen kami adalah mengubah sampah rumah tangga menjadi berkah melalui edukasi digital dan praktik langsung di masyarakat. 🌱♻️
+    </p>
+    <img src="pedulisampah.jpg" alt="Edukasi warga tentang pengelolaan sampah" style="max-width: 60%; height: auto; margin-top: 30px; border-radius: 15px; box-shadow: 0 0 20px rgba(0,0,0,0.3);">
+  </section>
+
+  <!-- Tema Sosialisasi -->
+<section class="tema-section" style="background: linear-gradient(135deg, #00c6ff, #0072ff); color: white; padding: 50px 25px; border-radius: 20px; text-align: center; box-shadow: 0 10px 25px rgba(0,0,0,0.2);">
+  <h2 style="font-size: 2.4rem; margin-bottom: 20px;">📢 Tema Sosialisasi</h2>
+  <p style="font-size: 1.2rem; max-width: 800px; margin: auto; line-height: 1.8;">
+    <strong style="font-size: 1.4rem;">"Sosialisasi Pengolahan Sampah Rumah Tangga Melalui Edukasi Digital di RW 07"</strong><br><br>
+    Kegiatan ini bertujuan untuk meningkatkan kesadaran dan pengetahuan warga tentang pentingnya pengelolaan sampah rumah tangga yang ramah lingkungan dan berkelanjutan. 💡<br><br>
+    Dalam sosialisasi ini, kami tidak hanya memberikan materi edukatif, tetapi juga mengajak warga untuk langsung <strong>berpartisipasi dalam praktik nyata</strong> pengolahan sampah yang bermanfaat. Materi yang kami sampaikan meliputi:
+  </p>
+  <ul style="text-align: left; max-width: 750px; margin: 30px auto 0; font-size: 1.1rem; line-height: 1.7;">
+    <li>🧪 <strong>Pembuatan POC (Pupuk Organik Cair)</strong> dari limbah dapur yang dapat meningkatkan kesuburan tanah.</li>
+    <li>🍂 <strong>Pembuatan kompos dari daun kering</strong> yang mudah dilakukan di lingkungan rumah.</li>
+    <li>🕯️ <strong>Pembuatan lilin dari minyak jelantah</strong> sebagai alternatif produk ramah lingkungan.</li>
+    <li>🧱 <strong>Pembuatan paving block</strong> dari sampah plastik sebagai solusi inovatif daur ulang.</li>
+  </ul>
+  <p style="margin-top: 30px; font-size: 1.1rem;">
+    Dengan pendekatan edukatif dan praktis ini, kami berharap masyarakat RW 07 dapat menjadi pelopor dalam menerapkan prinsip <em>zero waste</em> di lingkungan tempat tinggal mereka. 🌱♻️
+  </p>
+</section>
+
+  <!-- Anggota Kelompok -->
+  <!-- Gantilah bagian "Anggota Kelompok" di halaman tentang.html Anda menjadi ini: -->
+<section class="anggota-section">
+  <h2>Anggota KKN Kelompok 148 </h2>
+  <div class="anggota-scroll">
+    <div class="anggota-card"><img src="JOKO.png" alt="Teknik Mesin" onclick="showModal(0)"><p>Teknik Mesin</p></div>
+    <div class="anggota-card"><img src="NANDA.png" alt="Ilmu Hukum" onclick="showModal(1)"><p>Ilmu Hukum</p></div>
+    <div class="anggota-card"><img src="TASYA.png" alt="Agribisnis" onclick="showModal(2)"><p>Agribisnis</p></div>
+    <div class="anggota-card"><img src="VIOLLA NEW.png" alt="Kesejahteraan Sosial" onclick="showModal(3)"><p>Kesejahteraan Sosial</p></div>
+    <div class="anggota-card"><img src="ESA.png" alt="Informatika" onclick="showModal(4)"><p>Informatika</p></div>
+    <div class="anggota-card"><img src="VOLITA.png" alt="Pendidikan Non Formal" onclick="showModal(5)"><p>Pendidikan Non Formal</p></div>
+    <div class="anggota-card"><img src="EDO NEW.png" alt="Ilmu Hukum" onclick="showModal(6)"><p>Ilmu Hukum</p></div>
+    <div class="anggota-card"><img src="TOFAN.png" alt="Ilmu Perpustakaan" onclick="showModal(7)"><p>Ilmu Perpustakaan</p></div>
+  </div>
+</section>
+
+<!-- Modal Image Viewer -->
+<div id="imageModal" class="modal">
+  <span class="close" onclick="closeModal()">&times;</span>
+  <img class="modal-content" id="modalImage">
+</div>
+<span id="prevBtn" class="modal-nav" onclick="navigate(-1)">&#10094;</span>
+<span id="nextBtn" class="modal-nav" onclick="navigate(1)">&#10095;</span>
+
+<!-- Tambahkan ini di akhir sebelum </body> -->
+<script>
+  const images = [
+    "JOKO.png", "NANDA.png", "TASYA.png", "VIOLLA NEW.png",
+    "ESA.png", "VOLITA.png", "EDO NEW.png", "TOFAN.png"
+  ];
+  let currentIndex = 0;
+
+  function showModal(index) {
+    currentIndex = index;
+    document.getElementById("modalImage").src = images[currentIndex];
+    document.getElementById("imageModal").style.display = "block";
+  }
+
+  function closeModal() {
+    document.getElementById("imageModal").style.display = "none";
+  }
+
+  function navigate(step) {
+    currentIndex = (currentIndex + step + images.length) % images.length;
+    document.getElementById("modalImage").src = images[currentIndex];
+  }
+
+  window.onclick = function(event) {
+    const modal = document.getElementById("imageModal");
+    if (event.target == modal) {
+      modal.style.display = "none";
+    }
+  }
+</script>
+
+<!-- Tambahkan di <style> Anda -->
+<style>
+  .anggota-scroll {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    gap: 1.5rem;
+    padding: 1rem;
+  }
+
+  .anggota-card {
+    flex: 0 0 auto;
+    text-align: center;
+    scroll-snap-align: center;
+  }
+
+  .anggota-card img {
+    width: 180px;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 15px;
+    box-shadow: 0 0 12px rgba(0,0,0,0.3);
+    transition: transform 0.3s, box-shadow 0.3s;
+    cursor: pointer;
+  }
+
+  .anggota-card img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 15px #00ccff;
+  }
+
+  .anggota-card p {
+    margin-top: 0.6rem;
+    font-size: 1rem;
+    font-weight: bold;
+    color: #0a0a0a;
+  }
+
+  .modal {
+    display: none;
+    position: fixed;
+    z-index: 999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.9);
+  }
+
+  .modal-content {
+    margin: 5% auto;
+    display: block;
+    max-width: 90%;
+    max-height: 90vh;
+  }
+
+  .modal-nav {
+    position: fixed;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 2rem;
+    color: white;
+    cursor: pointer;
+    padding: 1rem;
+    z-index: 1000;
+    user-select: none;
+  }
+
+  #prevBtn { left: 20px; }
+  #nextBtn { right: 20px; }
+
+  .close {
+    position: absolute;
+    top: 20px;
+    right: 40px;
+    color: #fff;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+</style>
+</main>
+
+
+  <footer>
+    <p>&copy; 2025 KKN 148 Universitas Bengkulu - Program Edukasi Pengolahan Sampah</p>
+  </footer>
+

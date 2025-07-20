@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kontak | Edukasi Sampah RW 07</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(rgba(230,245,255,0.85), rgba(200,230,255,0.9)), url('bggsampah.jpeg') repeat;
+      background-attachment: fixed;
+      background-size: contain;
+      color: #222;
+      overflow-x: hidden;
+    }
+
+    .background-animation {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    .leaf {
+      position: absolute;
+      top: -60px;
+      width: 60px;
+      height: 60px;
+      background: url('sampah.jpg') no-repeat center;
+      background-size: contain;
+      animation: fall linear infinite;
+    }
+
+    @keyframes fall {
+      to {
+        transform: translateY(110vh) rotate(360deg);
+      }
+    }
+
+    header {
+      background-color: rgba(0, 64, 128, 0.85);
+      color: white;
+      padding: 1.5rem 1rem;
+      text-align: center;
+      border-bottom: 2px solid #00ccff;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.3);
+      z-index: 2;
+      position: relative;
+    }
+
+    header h1 {
+      white-space: nowrap;
+      overflow: hidden;
+      border-right: 3px solid #00ccff;
+      width: 0;
+      animation: typing 4s steps(60, end) forwards;
+    }
+
+    @keyframes typing {
+      from { width: 0; }
+      to { width: 100%; }
+    }
+
+    nav ul {
+      display: flex;
+      justify-content: center;
+      list-style: none;
+      padding: 0.7rem 0;
+      margin: 0;
+      background-color: rgba(0, 0, 64, 0.6);
+      box-shadow: inset 0 0 8px #00ccff;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      padding: 0.5rem 1rem;
+      margin: 0 0.5rem;
+      border-radius: 5px;
+      transition: all 0.3s ease;
+    }
+
+    nav a.active,
+    nav a:hover {
+      background-color: #ffffff !important;
+      color: #003366 !important;
+      border: 1px solid #3399ff;
+      box-shadow: 0 0 10px #3399ff;
+    }
+
+    .hero {
+  text-align: center;
+  background: linear-gradient(145deg, #ffffff, #e6f7ff);
+  background-image: radial-gradient(circle, rgba(0, 204, 255, 0.05) 1px, transparent 1px);
+  background-size: 30px 30px;
+  margin: 2rem auto 1rem;
+  padding: 2rem;
+  max-width: 750px;
+  border-radius: 15px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.25);
+  animation: fadeIn 1s ease-in-out;
+  position: relative;
+  z-index: 2;
+}
+
+    .hero h2 {
+      margin-bottom: 0.5rem;
+      color: #003366;
+    }
+
+    .hero p {
+      font-size: 1.1rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .contact-wrapper {
+  max-width: 650px;
+  margin: 1.5rem auto 3rem;
+  padding: 1.8rem;
+  background: linear-gradient(135deg, #e0f4ff, #c6e6ff);
+  border-radius: 18px;
+  box-shadow: 0 0 15px rgba(0, 123, 255, 0.3), 0 0 10px #00ccff;
+  border: 2px solid #99dfff;
+  text-align: left;
+  animation: fadeIn 1.2s ease;
+  position: relative;
+  z-index: 2;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.contact-wrapper:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 0 25px rgba(0, 153, 255, 0.5), 0 0 15px #00ccff;
+}
+
+
+    .contact-wrapper h3 {
+      color: #003366;
+      text-align: center;
+      margin-bottom: 1.5rem;
+      font-size: 1.6rem;
+    }
+
+    .contact-info {
+      line-height: 1.7;
+      font-size: 1.05rem;
+    }
+
+    .contact-info div {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 1rem;
+    }
+
+    .contact-info i {
+      font-size: 1.3rem;
+      color: #007acc;
+      width: 25px;
+      transition: 0.3s ease;
+    }
+
+    .contact-info div:hover i {
+      transform: scale(1.3);
+      color: #00ccff;
+    }
+
+    .contact-info a {
+      color: #003366;
+      text-decoration: none;
+    }
+
+    .contact-info a:hover {
+      text-decoration: underline;
+    }
+
+    .sosmed-icons {
+      text-align: center;
+      margin-top: 1.8rem;
+    }
+
+    .sosmed-icons a {
+      font-size: 1.8rem;
+      margin: 0 14px;
+      color: #007acc;
+      transition: 0.3s;
+    }
+
+    .sosmed-icons a:hover {
+      color: #003366;
+      transform: scale(1.2);
+    }
+
+    .qr-section img {
+      transition: transform 0.3s ease;
+    }
+
+    .qr-section img:hover {
+      transform: scale(1.05) rotate(1deg);
+    }
+
+    .qr-section .qr-icon {
+      font-size: 2.5rem;
+      color: #00ccff;
+      margin-bottom: 0.5rem;
+      animation: bounce 2s infinite;
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-6px); }
+    }
+
+    footer {
+      background-color: rgba(0, 0, 0, 0.85);
+      color: white;
+      text-align: center;
+      padding: 1rem;
+      font-size: 0.9rem;
+      border-top: 2px solid #00ccff;
+      z-index: 2;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Background animasi -->
+  <div class="background-animation">
+    <span class="leaf" style="left: 10%; animation-duration: 10s;"></span>
+    <span class="leaf" style="left: 30%; animation-duration: 12s;"></span>
+    <span class="leaf" style="left: 50%; animation-duration: 9s;"></span>
+    <span class="leaf" style="left: 70%; animation-duration: 11s;"></span>
+    <span class="leaf" style="left: 90%; animation-duration: 13s;"></span>
+  </div>
+
+  <header>
+    <h1>Hubungi Kami</h1>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">Tentang</a></li>
+        <li><a href="edukasi.html">Edukasi</a></li>
+        <li><a href="contact.html" class="active">Kontak</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <h2>Yuk, Ngobrol Bareng Kami!</h2>
+      <p>Punya ide cemerlang soal lingkungan? Mau kolaborasi atau butuh info kegiatan RW 07? Kami selalu senang mendengarnya!</p>
+    </section>
+
+    <section class="contact-wrapper">
+      <h3><i class="fas fa-paper-plane"></i> Info Kontak</h3>
+      <div class="contact-info">
+        <div><i class="fas fa-map-marker-alt"></i> <span>JL Teratai Indah Blok B, RT.19/RW.07<br><em>(Sekretariat KKN 148 Sukarami)</em></span></div>
+        <div><i class="fas fa-envelope"></i> <a href="mailto:kkn.148.sukarami@gmail.com">kkn.148.sukarami@gmail.com</a></div>
+        <div><i class="fab fa-whatsapp"></i> <a href="https://wa.me/6281379364866" target="_blank">0813-7936-4866</a></div>
+      </div>
+      <div class="sosmed-icons">
+        <a href="https://www.instagram.com/kkn_148_sukarami" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.tiktok.com/@kkn.148.sukarami" target="_blank"><i class="fab fa-tiktok"></i></a>
+      </div>
+    </section>
+
+    <section class="hero qr-section" style="margin-top: -1rem;">
+      <div class="qr-icon"><i class="fas fa-qrcode"></i></div>
+      <h2>Akses Cepat ke Materi Edukasi</h2>
+      <p>Scan QR Code berikut untuk membuka ulang materi edukasi pengolahan sampah rumah tangga secara digital.</p>
+      <div style="text-align: center; margin-top: 1rem;">
+        <img src="EDUKASI DIGITAL.png" alt="QR Code Edukasi Sampah" style="max-width: 200px; border: 6px solid #00ccff; border-radius: 12px; box-shadow: 0 0 10px rgba(0,0,0,0.2);" />
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 KKN 148 Universitas Bengkulu - Edukasi Pengolahan Sampah</p>
+  </footer>
+
+</body>
+</html>

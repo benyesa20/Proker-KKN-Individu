@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Kompos Daun Kering</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: url('kompos.jpg') no-repeat center center fixed;
+      background-size: cover;
+      color: #fff;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: auto;
+      background-color: rgba(0, 102, 204, 0.65);
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    h1 {
+      font-size: 2em;
+      margin-bottom: 10px;
+      color: #ffffff;
+      text-align: center;
+    }
+
+    p {
+      color: #f0f8ff;
+    }
+
+    img {
+      width: 100%;
+      max-width: 450px;
+      border-radius: 12px;
+      margin: 20px auto;
+      display: block;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    .steps {
+      text-align: left;
+      padding-left: 0;
+      list-style: none;
+    }
+
+    .steps li {
+      background: rgba(255, 255, 255, 0.2);
+      color: #ffffff;
+      margin: 10px 0;
+      padding: 15px 20px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .steps li strong {
+      color: #ffff66;
+    }
+
+    .steps li img {
+      width: 40px;
+      height: 40px;
+      object-fit: contain;
+    }
+
+    button {
+      margin-top: 20px;
+      background-color: #0066cc;
+      color: white;
+      border: none;
+      padding: 12px 25px;
+      border-radius: 10px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background-color: #004d99;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 600px) {
+      .steps li {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .steps li img {
+        margin-bottom: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🌱 Kompos Daun Kering</h1>
+    <img src="KOMPOS.jpg" alt="Gambar Kompos" />
+
+    <p><strong>🧂 Bahan:</strong></p>
+    <ol class="steps">
+      <li><span><strong>1.</strong> Daun kering</span></li>
+      <li><span><strong>2.</strong> Gula</span></li>
+      <li><span><strong>3.</strong> EM4</span></li>
+      <li><span><strong>4.</strong> Air (perbandingan 1:1:50 untuk gula, EM4, dan air)</span></li>
+    </ol>
+
+    <p><strong>🔧 Alat:</strong></p>
+    <ol class="steps">
+      <li><span><strong>1.</strong> Ember</span></li>
+      <li><span><strong>2.</strong> Bak kompos</span></li>
+      <li><span><strong>3.</strong> Pengaduk</span></li>
+      <li><span><strong>4.</strong> Sarung tangan</span></li>
+    </ol>
+
+    <p><strong>🧪 Cara Membuat Kompos Daun Kering:</strong></p>
+    <ol class="steps">
+      <li><span><strong>1.</strong> Kumpulkan daun kering, pisahkan dari ranting dan sampah lainnya.</span></li>
+      <li><span><strong>2.</strong> Cacah kecil-kecil agar cepat terurai.</span></li>
+      <li><span><strong>3.</strong> Campur larutan gula, EM4, dan air, lalu siram ke daun dalam ember.</span></li>
+      <li><span><strong>4.</strong> Aduk rata, tutup rapat, dan diamkan 15 hari.</span></li>
+      <li><span><strong>5.</strong> Setelah itu, keringkan 1 hari, lalu simpan kembali 1–2 hari.</span></li>
+      <li><span><strong>6.</strong> Kompos siap pakai bila warnanya cokelat tua, tidak bau, dan menggumpal saat digenggam.</span></li>
+    </ol>
+
+    <a href="edukasi.html"><button>🔙 Kembali ke Halaman Edukasi</button></a>
+  </div>
+</body>
+</html>
